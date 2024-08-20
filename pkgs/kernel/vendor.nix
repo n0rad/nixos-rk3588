@@ -22,7 +22,7 @@
   src = fetchFromGitHub {
     owner = "orangepi-xunlong";
     repo = "linux-orangepi";
-    rev = "9fd0cc90e31b90eb4ca2a57b4fa8223866378867";
+    rev = "752c0d0a12fdce201da45852287b48382caa8c0f";
     hash = "sha256-tVu/3SF/+s+Z6ytKvuY+ZwqsXUlm40yOZ/O5kfNfUYc=";
   };
 
