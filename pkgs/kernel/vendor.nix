@@ -26,6 +26,17 @@
     hash = "sha256-tVu/3SF/+s+Z6ytKvuY+ZwqsXUlm40yOZ/O5kfNfUYc=";
   };
 
+  kernelPatches = [
+    {
+      name="hdmirw";
+
+      patch=(builtins.fetchurl {
+        url = "https://gitea.lmr.io/lmr/public/raw/branch/main/hdmirx_write_fail.patch";
+        sha256 = "e98aa2c57b110ca7596a9659cb97a5359719ece58e6597720fa6870baec0b3c2";
+      });
+      extraConfig = '''';
+    }
+  ];
 
 
   # Steps to the generated kernel config file
