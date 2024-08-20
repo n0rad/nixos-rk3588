@@ -1,0 +1,25 @@
+From b566546bd9f693f5b36598a2df343580e44dcf8c Mon Sep 17 00:00:00 2001
+From: Arnaud Lemaire <alemaire@norad.fr>
+Date: Tue, 20 Aug 2024 21:29:21 +0200
+Subject: [PATCH] up
+
+---
+ drivers/media/platform/rockchip/hdmirx/rk_hdmirx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/rockchip/hdmirx/rk_hdmirx.c b/drivers/media/platform/rockchip/hdmirx/rk_hdmirx.c
+index e654d7e61..a1d3f01ba 100644
+--- a/drivers/media/platform/rockchip/hdmirx/rk_hdmirx.c
++++ b/drivers/media/platform/rockchip/hdmirx/rk_hdmirx.c
+@@ -1382,7 +1382,7 @@ static int hdmirx_phy_register_write(struct rk_hdmirx_dev *hdmirx_dev,
+ 	}
+ 
+ 	if (i == WAIT_PHY_REG_TIME) {
+-		dev_err(dev, "%s wait cr write done failed!\n", __func__);
++		/* dev_err(dev, "%s wait cr write done failed!\n", __func__); */
+ 		return -1;
+ 	}
+ 
+-- 
+2.44.1
+
