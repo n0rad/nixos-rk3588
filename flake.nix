@@ -165,6 +165,7 @@
               pkgsCross.gccStdenv.cc
               # native gcc
               gcc
+              #### bison flex gnumake bc openssl.dev
             ]
             ++ pkgs.linux.nativeBuildInputs);
           runScript = pkgs.writeScript "init.sh" ''
