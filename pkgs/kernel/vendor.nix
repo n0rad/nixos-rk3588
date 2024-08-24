@@ -18,6 +18,17 @@
   version = "${modDirVersion}-xunlong-rk3588";
   extraMeta.branch = "6.1";
 
+
+  # mkdir kernel && cd kernel
+  # git init
+  # git remote add origin https://github.com/orangepi-xunlong/linux-orangepi
+  # git fetch --depth 1 origin 752c0d0a12fdce201da45852287b48382caa8c0f
+  # git checkout 752c0d0a12fdce201da45852287b48382caa8c0f
+  # cp rk35xx_vendor_config .config
+  # make oldconfig
+  # make
+
+
   # https://github.com/orangepi-xunlong/linux-orangepi/tree/orange-pi-6.1-rk35xx
   src = fetchFromGitHub {
     owner = "orangepi-xunlong";
