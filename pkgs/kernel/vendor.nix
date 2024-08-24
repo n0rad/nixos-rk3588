@@ -26,6 +26,12 @@
     hash = "sha256-tVu/3SF/+s+Z6ytKvuY+ZwqsXUlm40yOZ/O5kfNfUYc=";
   };
 
+  kernelPatches = [
+    {
+      name="hdmirw";
+      patch = ./0001-up.patch;
+    }
+  ];
 
 
   # Steps to the generated kernel config file
