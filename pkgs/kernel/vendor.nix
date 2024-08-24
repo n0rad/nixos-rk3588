@@ -25,6 +25,7 @@
   # git fetch --depth 1 origin 752c0d0a12fdce201da45852287b48382caa8c0f
   # git checkout 752c0d0a12fdce201da45852287b48382caa8c0f
   # cp rk35xx_vendor_config .config
+  # unset CROSS_COMPILE
   # make oldconfig
   # make
 
