@@ -9,17 +9,6 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # For CI checks
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "";
-      };
-    };
   };
 
   outputs = {
@@ -27,7 +16,6 @@
     nixpkgs,
     flake-utils,
     nixos-generators,
-    pre-commit-hooks,
     ...
   }: let
     # Local system's architecture, the host you are running this flake on.
@@ -36,29 +24,13 @@
     # The native system of the target SBC.
     aarch64System = "aarch64-linux";
     pkgsNative = import nixpkgs {system = aarch64System;};
-
-    # Cross-compilation toolchain for building on the local system.
-    pkgsCross = import nixpkgs {
-      inherit localSystem;
-      crossSystem = aarch64System;
-    };
   in
     {
       nixosModules = {
-        # Orange Pi 5 SBC
-        orangepi5 = {
-          core = import ./modules/boards/orangepi5.nix;
-          sd-image = ./modules/sd-image/orangepi5.nix;
-        };
         # Orange Pi 5 Plus SBC
         orangepi5plus = {
           core = import ./modules/boards/orangepi5plus.nix;
           sd-image = ./modules/sd-image/orangepi5plus.nix;
-        };
-        # Rock 5 Model A SBC
-        rock5a = {
-          core = import ./modules/boards/rock5a.nix;
-          sd-image = ./modules/sd-image/rock5a.nix;
         };
       };
 
@@ -90,19 +62,8 @@
       pkgs = import nixpkgs {inherit system;};
     in {
       packages = {
-        # sdImage
-        sdImage-opi5 = self.nixosConfigurations.orangepi5.config.system.build.sdImage;
-        sdImage-opi5plus = self.nixosConfigurations.orangepi5plus.config.system.build.sdImage;
-        sdImage-rock5a = self.nixosConfigurations.rock5a.config.system.build.sdImage;
-
-        sdImage-opi5-cross = self.nixosConfigurations.orangepi5-cross.config.system.build.sdImage;
-        sdImage-opi5plus-cross = self.nixosConfigurations.orangepi5plus-cross.config.system.build.sdImage;
-        sdImage-rock5a-cross = self.nixosConfigurations.rock5a-cross.config.system.build.sdImage;
-
         # UEFI raw image
-        rawEfiImage-opi5 = self.nixosConfigurations.orangepi5-uefi.config.formats.raw-efi;
         rawEfiImage-opi5plus = self.nixosConfigurations.orangepi5plus-uefi.config.formats.raw-efi;
-        rawEfiImage-rock5a = self.nixosConfigurations.rock5a-uefi.config.formats.raw-efi;
       };
     });
 }
