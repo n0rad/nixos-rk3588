@@ -64,7 +64,7 @@
 
       nixosConfigurations =
         # UEFI system, boot via edk2-rk3588 - fully native
-        // (nixpkgs.lib.mapAttrs'
+        (nixpkgs.lib.mapAttrs'
           (name: board:
             nixpkgs.lib.nameValuePair
             (name + "-uefi")
