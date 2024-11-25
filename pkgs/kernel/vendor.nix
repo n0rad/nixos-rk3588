@@ -29,7 +29,11 @@
   kernelPatches = [
     {
       name="hdmirw";
-      patch = ./0001-up.patch;
+      patch = ./0001-hdmirw.patch;
+    }
+    {
+      name = "";
+      patch = ./0002-rkcif-signature.patch;
     }
   ];
 
@@ -45,6 +49,6 @@
   allowImportFromDerivation = true;
 })
 .overrideAttrs (old: {
-  name = "k"; # dodge uboot length limits
+#  name = "k"; # dodge uboot length limits
   nativeBuildInputs = old.nativeBuildInputs ++ [ubootTools];
 })
